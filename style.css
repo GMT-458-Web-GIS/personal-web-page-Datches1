@@ -131,7 +131,7 @@ main {
     margin-bottom: 15px;
 }
 
-/* Animasyon */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -143,7 +143,7 @@ main {
     }
 }
 
-/* Tablo Stilleri */ 
+
 .tech-table {
     width: 100%;
     border-collapse: collapse;
@@ -166,11 +166,167 @@ main {
     height: 40px;
 }
 
-/* Harita Stili */ 
+
 .map {
     width: 100%;
     height: 500px;
     border: 1px solid #ccc;
     border-radius: 8px;
     margin-top: 20px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+    
+    .profile-photo {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .profile-section h1 {
+        font-size: 20px;
+    }
+    
+    .profile-section p {
+        font-size: 14px;
+    }
+    
+    .social-links a {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
+    nav ul li a {
+        font-size: 14px;
+        padding: 8px;
+    }
+    
+    main {
+        margin-left: 0;
+        padding: 20px;
+    }
+    
+    .article {
+        padding: 20px;
+        max-width: 100%;
+    }
+    
+    .article h2 {
+        font-size: 20px;
+    }
+    
+    .article h3 {
+        font-size: 18px;
+    }
+    
+    .article p {
+        font-size: 14px;
+    }
+    
+    
+    .tech-table {
+        font-size: 12px;
+    }
+    
+    .tech-table th,
+    .tech-table td {
+        padding: 8px;
+    }
+    
+    .tech-table img {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .project-image {
+        width: 40px;
+        height: 40px;
+    }
+    
+   
+    #map {
+        height: 300px !important;
+    }
+    
+    
+    .social-container {
+        gap: 30px;
+    }
+    
+    .social-icon {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .social-icon i {
+        font-size: 50px;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .sidebar {
+        padding: 15px;
+    }
+    
+    .profile-photo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .profile-section h1 {
+        font-size: 18px;
+    }
+    
+    main {
+        padding: 10px;
+    }
+    
+    .article {
+        padding: 15px;
+    }
+    
+    .article h2 {
+        font-size: 18px;
+    }
+    
+    .article h3 {
+        font-size: 16px;
+    }
+    
+    .article p {
+        font-size: 13px;
+    }
+    
+    
+    .tech-table {
+        font-size: 11px;
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .tech-table th,
+    .tech-table td {
+        padding: 5px;
+    }
+    
+   
+    .social-icon {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .social-icon i {
+        font-size: 40px;
+    }
+    
+    .social-container {
+        gap: 20px;
+    }
 }
