@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Umut Sozen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #stars-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: #000;
+        }
+        
+        .article.dark-theme {
+            background: #202020;
+            color: #fff;
+        }
+        
+        .article.dark-theme h2 {
+            color: #fff;
+        }
+        
+        .article.dark-theme p {
+            color: #ddd;
+        }
+        
+        .article.dark-theme .tech-table {
+            color: #fff;
+        }
+        
+        .article.dark-theme .tech-table th {
+            background-color: #3a3a3a;
+            color: #fff;
+            border-bottom: 1px solid #555;
+        }
+        
+        .article.dark-theme .tech-table td {
+            border-bottom: 1px solid #444;
+            color: #ddd;
+        }
+        
+        .project-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .status-completed {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .status-ongoing {
+            background-color: #ffc107;
+            color: #000;
+        }
+        
+        .youtube-link {
+            color: #FF0000;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+        }
+        
+        .youtube-link:hover {
+            color: #ff4444;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="stars-canvas"></canvas>
+    
+    <div class="sidebar">
+        <div class="profile-section">
+            <img src="profile-photo.jpeg" alt="Profil Fotoğrafı" class="profile-photo">
+            <h1>Umut Sozen</h1>
+            <p>Hi I'm Umut. Welcome to my blog!</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/umut-s%C3%B6zen-7b7a48297/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/Datches1" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <li><a href="social.html">Social</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <article class="article dark-theme">
+            <h2>My Projects</h2>
+            <p>A collection of projects I've worked on during my academic journey.</p>
+            
+            <table class="tech-table">
+                <thead>
+                    <tr>
+                        <th>Preview</th>
+                        <th>Project Name</th>
+                        <th>Description</th>
+                        <th>Technologies</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Typical_Tetris_Game.svg/200px-Typical_Tetris_Game.svg.png" alt="Tetris Game" class="project-image"></td>
+                        <td><strong>Basic Tetris Game</strong></td>
+                        <td>A classic Tetris game developed using Python. It includes basic Tetris game mechanics. Watch the explanation: <a href="https://youtu.be/MKSwxEpWYPQ" target="_blank" class="youtube-link"><i class="fab fa-youtube"></i> YouTube Video</a></td>
+                        <td>Python</td>
+                        <td><span class="status-badge status-completed">Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><img src="netcad.jpg" alt="Coordinate Improvement" class="project-image"></td>
+                        <td><strong>Sağmalcılar District Coordinate Improvement</strong></td>
+                        <td>Coordinate improvement was carried out in the Sağmalcılar district of Istanbul province using Netcad software and information obtained from cadastral documents.</td>
+                        <td>Netcad, Cadastral Analysis</td>
+                        <td><span class="status-badge status-completed">Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td><img src="sattelite.png" alt="Road Detection" class="project-image"></td>
+                        <td><strong>Road Extraction from Satellite Imagery</strong></td>
+                        <td>An ongoing project focused on extracting road networks from satellite images using image processing and machine learning techniques.</td>
+                        <td>Python, OpenCV, Deep Learning</td>
+                        <td><span class="status-badge status-ongoing">Ongoing</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+    </main>
+
+    <script>
+        // Yıldızlı gece gökyüzü animasyonu
+        const canvas = document.getElementById('stars-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            createStars();
+        });
+        
+        let stars = [];
+        
+        function createStars() {
+            stars = [];
+            for (let i = 0; i < 200; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 2,
+                    opacity: Math.random(),
+                    speed: Math.random() * 0.5 + 0.1
+                });
+            }
+        }
+        
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            stars.forEach(star => {
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+                ctx.fill();
+                
+                star.opacity += star.speed * 0.02;
+                if (star.opacity > 1 || star.opacity < 0.1) {
+                    star.speed *= -1;
+                }
+            });
+            
+            requestAnimationFrame(drawStars);
+        }
+        
+        createStars();
+        drawStars();
+    </script>
+</body>
+</html>

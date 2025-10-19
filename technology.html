@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology - Umut Sozen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #stars-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: #000;
+        }
+        
+        .article.dark-theme {
+            background: #2a2a2a;
+            color: #fff;
+        }
+        
+        .article.dark-theme h2 {
+            color: #fff;
+        }
+        
+        .article.dark-theme p {
+            color: #ddd;
+        }
+        
+        .article.dark-theme .tech-table {
+            color: #fff;
+        }
+        
+        .article.dark-theme .tech-table th {
+            background-color: #3a3a3a;
+            color: #fff;
+            border-bottom: 1px solid #555;
+        }
+        
+        .article.dark-theme .tech-table td {
+            border-bottom: 1px solid #444;
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="stars-canvas"></canvas>
+    
+    <div class="sidebar">
+        <div class="profile-section">
+            <img src="profile-photo.jpeg" alt="Profil Fotoğrafı" class="profile-photo">
+            <h1>Umut Sozen</h1>
+            <p>Hi I'm Umut. Welcome to my blog!</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/umut-s%C3%B6zen-7b7a48297/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/Datches1" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="technology.html">Technology</a></li>
+                <li><a href="social.html">Social</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <article class="article dark-theme">
+            <h2>Technologies I Use</h2>
+            <p>Technologies and tools I use in the development of this website.</p>
+            
+            <table class="tech-table">
+                <thead>
+                    <tr>
+                        <th>Logo</th>
+                        <th>Teknoloji</th>
+                        <th>Açıklama</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"></td>
+                        <td>HTML5</td>
+                        <td>I use it to create the structure of web page.</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"></td>
+                        <td>CSS3</td>
+                        <td>I use it to style and design the appearance of web page.</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></td>
+                        <td>JavaScript</td>
+                        <td>I use it to develop interactive and dynamic web applications.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+    </main>
+
+    <script>
+        const canvas = document.getElementById('stars-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            createStars();
+        });
+        
+        let stars = [];
+        
+        function createStars() {
+            stars = [];
+            for (let i = 0; i < 200; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 2,
+                    opacity: Math.random(),
+                    speed: Math.random() * 0.5 + 0.1
+                });
+            }
+        }
+        
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            stars.forEach(star => {
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+                ctx.fill();
+                
+                star.opacity += star.speed * 0.02;
+                if (star.opacity > 1 || star.opacity < 0.1) {
+                    star.speed *= -1;
+                }
+            });
+            
+            requestAnimationFrame(drawStars);
+        }
+        
+        createStars();
+        drawStars();
+    </script>
+</body>
+</html>
