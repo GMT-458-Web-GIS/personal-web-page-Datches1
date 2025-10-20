@@ -1,1 +1,1 @@
-read.me
+My website link is https://datches1.github.io/personalwebpage/. I hosted my project on GitHub Pages using Visual Studio Code as the main development environment. I learned how to use GitHub and Visual Studio Code entirely from YouTube tutorials. Later, I began to understand the basic structure of websites through the help of an AI assistant. After learning these foundations, I started modifying and improving the website on my own. Sometimes I made changes myself, and other times I used AI assistance to make the process more practical and efficient.
